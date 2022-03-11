@@ -7,7 +7,7 @@ def F(x) :
 def f(x) :
     return 2*x - 5*np.cos(x)
 
-def GD(LR , x0) :
+def GD(LR , x0) -> (list , int) :
     """
     Args :
     :param LR: hang so hoc
@@ -17,7 +17,6 @@ def GD(LR , x0) :
     x = [x0]
     while(1) :
         xms = x[-1] - LR*f(x[-1])
-
         if abs(f(xms)) < 1e-6 :
             break
 
@@ -28,5 +27,6 @@ x = GD(0.001, 5)
 
 a = np.linspace(-5, 4, 100)
 plt.plot(a, F(a))
+plt.scatter(x[-1] , F(x[-1]) , c = 'red' )
 plt.show()
 plt.savefig("anh.png")
